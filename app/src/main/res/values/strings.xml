@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">SDSU Children Center</string>
+    <string name="information">Information</string>
+
+    <string-array name="children">
+        <item>Eugene</item>
+        <item>Hajin</item>
+        <item>Hermione</item>
+    </string-array>
+
+    <string-array name="information">
+        <item>Giraffes, Sep.28 2021, Food Allergies: None</item>
+        <item>Koalas, Apr.21 2022, Food Allergies: Eggs</item>
+        <item>Koalas, Feb.17 2022, Food Allergies: None</item>
+    </string-array>
+</resources>
