@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 
+const val ARG_CHILD_ID = "child_id"
+
 class ChildInfoFragment : Fragment() {
 
     private var child: Child? = null
@@ -15,6 +17,9 @@ class ChildInfoFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         var childId = 1
+
+        // Get the child ID from the fragment arguments
+        arguments?.let { childId = it.getInt(ARG_CHILD_ID) }
 
         // Get the selected child
         child = ChildRepository.getInstance(requireContext()).getChild(childId)

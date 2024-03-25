@@ -6,11 +6,35 @@
         <item>Eugene</item>
         <item>Hajin</item>
         <item>Hermione</item>
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+        <item>E</item>
+        <item>F</item>
+        <item>G</item>
+        <item>H</item>
+        <item>I</item>
+        <item>J</item>
+        <item>K</item>
+        <item>L</item>
     </string-array>
 
     <string-array name="information">
-        <item>Giraffes, Sep.28 2021, Food Allergies: None</item>
-        <item>Koalas, Apr.21 2022, Food Allergies: Eggs</item>
-        <item>Koalas, Feb.17 2022, Food Allergies: None</item>
+        <item>Giraffes \nSep.28 2021 \nFood Allergies: None</item>
+        <item>Koalas \nApr.21 2022 \nFood Allergies: Eggs</item>
+        <item>Koalas \nFeb.17 2022 \nFood Allergies: None</item>
+        <item>sample A</item>
+        <item>sample B</item>
+        <item>sample C</item>
+        <item>sample D</item>
+        <item>sample E</item>
+        <item>sample F</item>
+        <item>sample G</item>
+        <item>sample H</item>
+        <item>sample I</item>
+        <item>sample J</item>
+        <item>sample K</item>
+        <item>sample L</item>
     </string-array>
 </resources>
