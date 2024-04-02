@@ -28,4 +28,29 @@
         <item name="android:textAllCaps">false</item>
         <item name="android:textSize">30sp</item>
     </style>
+
+    <style name="Theme.StudyHelper" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/dark_brown</item>
+        <item name="colorPrimaryDark">@color/bright_red</item>
+        <item name="colorAccent">@color/dark_red</item>
+    </style>
+
+    <style name="CardLabel">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/light_gray</item>
+    </style>
+
+    <style name="PersonLabel">
+        <item name="android:textSize">60sp</item>
+        <item name="android:textColor">@color/bright_teal</item>
+    </style>
+
+    <style name="PeosonEditText">
+        <item name="android:gravity">top</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginBottom">20dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+    </style>
 </resources>

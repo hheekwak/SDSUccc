@@ -11,4 +11,17 @@
     <color name="dark_teal">#008080</color>
     <color name="light_gray">#CDCDC8</color>
 
+
+    <array name="cclassColors">
+        <item>#FFDD33</item>
+        <item>#FFA533</item>
+        <item>#ACA5B2</item>
+        <item>#58555B</item>
+        <item>#25B419</item>
+        <item>#584990</item>
+        <item>#E29B66</item>
+        <item>#1ACBCB</item>
+        <item>#734006</item>
+    </array>
+
 </resources>

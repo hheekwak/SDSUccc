@@ -1,6 +1,33 @@
 <resources>
     <string name="app_name">SDSU Children Center</string>
     <string name="information">Information</string>
+    <string name="person_label">Name</string>
+    <string name="question_hint">Question</string>
+    <string name="information_label">Info</string>
+    <string name="show_information">Show Information</string>
+    <string name="hide_information">Hide Information</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
+    <string name="add">Add</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="update">Update</string>
+    <string name="save_person">Save Person</string>
+    <string name="add_cclass">Add Class</string>
+    <string name="person_deleted">Person deleted.</string>
+    <string name="person_added">Person added.</string>
+    <string name="person_updated">Person updated.</string>
+    <string name="create">Create</string>
+    <string name="cclass">New class?</string>
+    <string name="cancel">Cancel</string>
+    <string name="edit_person">Edit Person</string>
+    <string name="add_person">Add Person</string>
+    <string name="no_person">No person exist for this class.</string>
+    <string name="cclass_exists">The class "%1$s" already exists.</string>
+    <string name="person_number">%1$s (%2$d of %3$d)</string>
+    <string name="import_persons">Import</string>
+    <string name="select_cclass">Select a class:</string>
+    <string name="undo">Undo</string>
 
     <string-array name="children">
         <item>Eugene</item>
