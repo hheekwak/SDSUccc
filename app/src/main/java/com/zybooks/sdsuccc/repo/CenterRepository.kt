@@ -1,15 +1,11 @@
 package com.zybooks.sdsuccc.repo
 
 import android.content.Context
+import androidx.room.Room
 import com.zybooks.sdsuccc.model.Person
 import com.zybooks.sdsuccc.model.Cclass
-import java.util.*
 
 class CenterRepository private constructor(context: Context) {
-
-    private val cclassList = mutableListOf<Cclass>()
-    private val personMap = mutableMapOf<Long, MutableList<Person>>()
-
     companion object {
         private var instance: CenterRepository? = null
 
@@ -21,40 +17,82 @@ class CenterRepository private constructor(context: Context) {
         }
     }
 
+    private val database : CenterDatabase = Room.databaseBuilder(
+        context.applicationContext,
+        CenterDatabase::class.java,
+        "center.db"
+    )
+        .allowMainThreadQueries()
+        .build()
+
+    private val cclassDao = database.cclassDao()
+    private val personDao = database.personDao()
+
     init {
-        addStarterData()
+        if (cclassDao.getCclasses().isEmpty()) {
+            addStarterData()
+        }
     }
+
+    fun getCclass(cclassId: Long): Cclass? = cclassDao.getCclass(cclassId)
+
+    fun getCclasses(): List<Cclass> = cclassDao.getCclasses()
 
     fun addCclass(cclass: Cclass) {
-        cclassList.add(cclass)
-        personMap[cclass.id] = mutableListOf()
+        cclass.id = cclassDao.addCclass(cclass)
     }
 
-    fun getCclass(): List<Cclass> {
-        return Collections.unmodifiableList(cclassList)
-    }
+    fun deleteCclass(cclass: Cclass) = cclassDao.deleteCclass(cclass)
+
+    fun getPerson(personId: Long): Person? = personDao.getPerson(personId)
+
+    fun getPersons(cclassId: Long): List<Person> = personDao.getPersons(cclassId)
 
     fun addPerson(person: Person) {
-        personMap[person.cclassId]?.add(person)
+        person.id = personDao.addPerson(person)
     }
 
-    fun getPersons(cclassId: Long): List<Person> {
-        return Collections.unmodifiableList(personMap[cclassId]!!)
-    }
+    fun updatePerson(person: Person) = personDao.updatePerson(person)
+
+    fun deletePerson(person: Person) = personDao.deletePerson(person)
 
     private fun addStarterData() {
+        var cclassId = cclassDao.addCclass(Cclass(text = "Chicks"))
+        personDao.addPerson(
+            Person(
+                name = "Mark Pateros",
+                dob = "Sep. 06, 2023",
+                allergy = "No allergies",
+                cclassId = cclassId
+            )
+        )
+        personDao.addPerson(
+            Person(
+                name = "Steven Sosin",
+                dob = "Jul. 14, 2023",
+                allergy = "No allergies",
+                cclassId = cclassId
+            )
+        )
 
-        addCclass(Cclass(1, "Chicks"))
-        addPerson(Person(1, "Mark Pateros", "Sep. 06, 2023", "No allergies", 1))
-        addPerson(Person(2, "Steven Sosin",
-            "Jul. 14, 2023","No allergies", 1))
+        cclassId = cclassDao.addCclass(Cclass(text = "Koalas"))
+        personDao.addPerson(
+            Person(
+                name = "Hajin Lee",
+                dob = "Apr. 21, 2022",
+                allergy = "Egg allergy",
+                cclassId = cclassId
+            )
+        )
 
-        addCclass(Cclass(2, "Koalas"))
-        addPerson(Person(3,
-            "Hajin Lee",
-            "Apr. 21, 2022", "Egg allergy", 2))
-        addPerson(Person(4, "Hermione", "Apr.06, 2022"," No allergies",  2))
-
-        addCclass(Cclass(3, "Pandas"))
+        personDao.addPerson(
+            Person(
+                name = "Hermione Dancer",
+                dob = "Apr.06, 2022",
+                allergy = "No allergies",
+                cclassId = cclassId
+            )
+        )
+        cclassId = cclassDao.addCclass(Cclass(text = "Pandas"))
     }
 }

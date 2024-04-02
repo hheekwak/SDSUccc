@@ -37,7 +37,7 @@ class CclassActivity : AppCompatActivity(),
         cclassRecyclerView.layoutManager = GridLayoutManager(applicationContext, 2)
 
         // Show the classes
-        updateUI(cclassListViewModel.getCclass())
+        updateUI(cclassListViewModel.getCclasses())
     }
 
     private fun updateUI(cclassList: List<Cclass>) {
@@ -49,7 +49,7 @@ class CclassActivity : AppCompatActivity(),
         if (cclassText.isNotEmpty()) {
             val cclass = Cclass(0, cclassText)
             cclassListViewModel.addCclass(cclass)
-            updateUI(cclassListViewModel.getCclass())
+            updateUI(cclassListViewModel.getCclasses())
 
             Toast.makeText(this, "Added $cclassText", Toast.LENGTH_SHORT).show()
         }

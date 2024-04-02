@@ -8,5 +8,5 @@ class PersonListViewModel(application: Application) {
 
     private val centerRepo = CenterRepository.getInstance(application.applicationContext)
 
-    fun getPerson(cclassId: Long): List<Person> = centerRepo.getPersons(cclassId)
+    fun getPersons(cclassId: Long): List<Person> = centerRepo.getPersons(cclassId)
 }

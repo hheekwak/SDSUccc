@@ -4,11 +4,11 @@ import android.app.Application
 import com.zybooks.sdsuccc.model.Cclass
 import com.zybooks.sdsuccc.repo.CenterRepository
 
-class SubjectListViewModel(application: Application) {
+class CclassListViewModel(application: Application) {
 
     private val centerRepo = CenterRepository.getInstance(application.applicationContext)
 
-    fun getCclass(): List<Cclass> = centerRepo.getCclass()
+    fun getCclasses(): List<Cclass> = centerRepo.getCclasses()
 
     fun addCclass(cclass: Cclass) = centerRepo.addCclass(cclass)
 }

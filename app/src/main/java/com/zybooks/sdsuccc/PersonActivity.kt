@@ -12,7 +12,7 @@ import com.zybooks.sdsuccc.model.Person
 import com.zybooks.sdsuccc.model.Cclass
 import com.zybooks.sdsuccc.viewmodel.PersonListViewModel
 
-class QuestionActivity : AppCompatActivity() {
+class PersonActivity : AppCompatActivity() {
 
     private lateinit var personListViewModel: PersonListViewModel
     private lateinit var cclass: Cclass
@@ -51,7 +51,7 @@ class QuestionActivity : AppCompatActivity() {
 
         // Get all person for this class
         personListViewModel = PersonListViewModel(application)
-        personList = personListViewModel.getPerson(cclassId)
+        personList = personListViewModel.getPersons(cclassId)
 
         // Display person
         updateUI()
