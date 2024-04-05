@@ -1,5 +1,6 @@
 package com.zybooks.sdsuccc.repo
 
+import androidx.lifecycle.LiveData
 import android.content.Context
 import androidx.room.Room
 import com.zybooks.sdsuccc.model.Person
@@ -28,15 +29,9 @@ class CenterRepository private constructor(context: Context) {
     private val cclassDao = database.cclassDao()
     private val personDao = database.personDao()
 
-    init {
-        if (cclassDao.getCclasses().isEmpty()) {
-            addStarterData()
-        }
-    }
+    fun getCclass(cclassId: Long): LiveData<Cclass?> = cclassDao.getCclass(cclassId)
 
-    fun getCclass(cclassId: Long): Cclass? = cclassDao.getCclass(cclassId)
-
-    fun getCclasses(): List<Cclass> = cclassDao.getCclasses()
+    fun getCclasses(): LiveData<List<Cclass>> = cclassDao.getCclasses()
 
     fun addCclass(cclass: Cclass) {
         cclass.id = cclassDao.addCclass(cclass)
@@ -44,9 +39,9 @@ class CenterRepository private constructor(context: Context) {
 
     fun deleteCclass(cclass: Cclass) = cclassDao.deleteCclass(cclass)
 
-    fun getPerson(personId: Long): Person? = personDao.getPerson(personId)
+    fun getPerson(personId: Long): LiveData<Person?> = personDao.getPerson(personId)
 
-    fun getPersons(cclassId: Long): List<Person> = personDao.getPersons(cclassId)
+    fun getPersons(cclassId: Long): LiveData<List<Person>> = personDao.getPersons(cclassId)
 
     fun addPerson(person: Person) {
         person.id = personDao.addPerson(person)

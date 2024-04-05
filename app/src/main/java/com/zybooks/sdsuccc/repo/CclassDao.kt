@@ -1,15 +1,16 @@
 package com.zybooks.sdsuccc.repo
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.zybooks.sdsuccc.model.Cclass
 
 @Dao
 interface CclassDao {
     @Query("SELECT * FROM Cclass WHERE id = :id")
-    fun getCclass(id: Long): Cclass?
+    fun getCclass(id: Long): LiveData<Cclass?>
 
     @Query("SELECT * FROM Cclass ORDER BY text COLLATE NOCASE")
-    fun getCclasses(): List<Cclass>
+    fun getCclasses(): LiveData<List<Cclass>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addCclass(cclass: Cclass): Long

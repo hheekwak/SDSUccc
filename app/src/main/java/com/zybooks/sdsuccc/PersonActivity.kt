@@ -1,5 +1,6 @@
 package com.zybooks.sdsuccc
 
+import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -14,7 +15,6 @@ import com.zybooks.sdsuccc.viewmodel.PersonListViewModel
 
 class PersonActivity : AppCompatActivity() {
 
-    private lateinit var personListViewModel: PersonListViewModel
     private lateinit var cclass: Cclass
     private lateinit var personList: List<Person>
     private lateinit var infoLabelTextView: TextView
@@ -24,6 +24,9 @@ class PersonActivity : AppCompatActivity() {
     private lateinit var showPersonLayout: ViewGroup
     private lateinit var noPersonLayout: ViewGroup
     private var currentPersonIndex = 0
+    private val personListViewModel: PersonListViewModel by lazy {
+        ViewModelProvider(this).get(PersonListViewModel::class.java)
+    }
 
     companion object {
         const val EXTRA_CCLASS_ID = "com.zybooks.sdsuccc.cclass_id"
@@ -50,11 +53,12 @@ class PersonActivity : AppCompatActivity() {
         cclass = Cclass(cclassId, cclassText!!)
 
         // Get all person for this class
-        personListViewModel = PersonListViewModel(application)
-        personList = personListViewModel.getPersons(cclassId)
-
-        // Display person
-        updateUI()
+        personList = emptyList()
+        personListViewModel.loadPersons(cclassId)
+        personListViewModel.personListLiveData.observe(this) { personList ->
+            this.personList = personList
+            updateUI()
+        }
     }
 
     private fun updateUI() {

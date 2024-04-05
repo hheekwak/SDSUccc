@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.zybooks.sdsuccc.model.Cclass
 import com.zybooks.sdsuccc.viewmodel.CclassListViewModel
+import androidx.lifecycle.ViewModelProvider
 
 class CclassActivity : AppCompatActivity(),
     CclassDialogFragment.OnCclassEnteredListener {
@@ -20,13 +21,13 @@ class CclassActivity : AppCompatActivity(),
     private var cclassAdapter = CclassAdapter(mutableListOf())
     private lateinit var cclassRecyclerView: RecyclerView
     private lateinit var cclassColors: IntArray
-    private lateinit var cclassListViewModel: CclassListViewModel
+    private val cclassListViewModel: CclassListViewModel by lazy {
+        ViewModelProvider(this).get(CclassListViewModel::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cclass)
-
-        cclassListViewModel = CclassListViewModel(application)
 
         cclassColors = resources.getIntArray(R.array.cclassColors)
 
@@ -37,7 +38,10 @@ class CclassActivity : AppCompatActivity(),
         cclassRecyclerView.layoutManager = GridLayoutManager(applicationContext, 2)
 
         // Show the classes
-        updateUI(cclassListViewModel.getCclasses())
+        cclassListViewModel.cclassListLiveData.observe(
+            this, { cclassList ->
+                updateUI(cclassList)
+            })
     }
 
     private fun updateUI(cclassList: List<Cclass>) {
@@ -49,7 +53,6 @@ class CclassActivity : AppCompatActivity(),
         if (cclassText.isNotEmpty()) {
             val cclass = Cclass(0, cclassText)
             cclassListViewModel.addCclass(cclass)
-            updateUI(cclassListViewModel.getCclasses())
 
             Toast.makeText(this, "Added $cclassText", Toast.LENGTH_SHORT).show()
         }
