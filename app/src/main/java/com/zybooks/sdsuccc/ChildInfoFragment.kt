@@ -1,7 +1,9 @@
 package com.zybooks.sdsuccc
 
 import android.os.Bundle
+import android.view.ContextMenu
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
@@ -17,6 +19,7 @@ class ChildInfoFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         var childId = 1
+
 
         // Get the child ID from the fragment arguments
         arguments?.let { childId = it.getInt(ARG_CHILD_ID) }
@@ -37,5 +40,35 @@ class ChildInfoFragment : Fragment() {
         }
 
         return rootView
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        // Registering for context menu here after the view is created
+        registerForContextMenu(view)
+    }
+
+    override fun onCreateContextMenu(menu: ContextMenu, v: View, menuInfo: ContextMenu.ContextMenuInfo?) {
+        super.onCreateContextMenu(menu, v, menuInfo)
+        // Use the MenuInflater from the fragment's context
+        requireActivity().menuInflater.inflate(R.menu.context_menu, menu)
+    }
+
+    override fun onContextItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.message -> {
+                // Handle the message action
+                true
+            }
+            R.id.details -> {
+                // Handle the details action
+                true
+            }
+            R.id.deactivate -> {
+                // Handle the deactivate action
+                true
+            }
+            else -> super.onContextItemSelected(item)
+        }
     }
 }

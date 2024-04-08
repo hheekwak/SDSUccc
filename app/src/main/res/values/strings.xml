@@ -3,6 +3,10 @@
     <string name="information">Information</string>
     <string name="action_logout">logout</string>
     <string name="action_about">about</string>
+    <string name="class_code">class code?</string>
+    <string name="message">message</string>
+    <string name="details">details</string>
+    <string name="deactivate">deactivate</string>
 
     <string-array name="children">
         <item>Eugene</item>
