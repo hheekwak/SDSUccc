@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">SDSU Children Center</string>
     <string name="information">Information</string>
+    <string name="action_logout">logout</string>
+    <string name="action_about">about</string>
 
     <string-array name="children">
         <item>Eugene</item>

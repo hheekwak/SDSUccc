@@ -12,7 +12,7 @@
         <argument
             android:name="child_id"
             android:defaultValue="1"
-            app:argType="integer" />
+            app:argType="integer"/>
     </fragment>
 
 </navigation>
